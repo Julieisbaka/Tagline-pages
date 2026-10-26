@@ -34,6 +34,16 @@ a {
   text-decoration: none;
 }
 
+a[href^="https://"]:not(:has([aria-hidden="true"]))::after {
+  display: inline-block;
+  margin-inline-start: 0.25em;
+  color: var(--purple);
+  content: "↗";
+  font-size: 0.82em;
+  line-height: 1;
+  vertical-align: 0.08em;
+}
+
 h1,
 h2,
 h3,

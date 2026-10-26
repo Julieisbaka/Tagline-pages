@@ -17,7 +17,7 @@
       <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="../index.html#features">Features</a>
-        <a href="./" aria-current="location">Docs</a>
+        <a href="index.html" aria-current="location">Docs</a>
         <a href="https://github.com/Julieisbaka/Tagline">GitHub</a>
       </nav>
       <a class="button button-small button-outline" href="https://github.com/Julieisbaka/Tagline/releases/latest">
@@ -36,9 +36,12 @@
         <aside class="docs-sidebar">
           <h2>Guides</h2>
           <nav aria-label="Documentation">
-            <a href="./">Documentation home</a>
+            <a href="index.html">Documentation home</a>
             <a href="getting-started.html">Getting started</a>
             <a href="features.html">Working in Tagline</a>
+            <a href="notes-and-evidence.html">Notes &amp; evidence</a>
+            <a href="search-and-citations.html">Search &amp; citations</a>
+            <a href="speech-workflows.html">Speech workflows</a>
             <a href="integrations.html">Integrations</a>
             <a href="customization.html" aria-current="page">Themes &amp; extensions</a>
           </nav>
@@ -51,7 +54,7 @@
           <h2 id="themes">Create a theme</h2>
           <p>Themes are JSON color palettes with optional CSS custom-property overrides. Start with a built-in theme, choose <strong>Customize current theme</strong>, and adjust the palette. Export the result as JSON to keep or share it; import a JSON theme to apply it.</p>
           <p>Tagline validates imported themes and displays import errors instead of partially applying invalid files. The repository’s theme guide lists the supported colors, variables, metadata, limits, and JSON schema.</p>
-          <p><a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/theme-api.md">Read the complete Theme API reference ↗</a></p>
+          <p><a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/theme-api.md">Read the complete Theme API reference <span aria-hidden="true">↗</span></a></p>
 
           <h2 id="extensions">Install an extension</h2>
           <ol>
@@ -60,7 +63,7 @@
             <li>Choose <strong>Reload extensions</strong>, review the requested permissions, then enable the extension.</li>
           </ol>
           <p>Extensions can contribute commands, ribbon shortcuts, settings, themes, sidebar panels, and dialogs. Entry scripts run in a sandboxed worker through the supplied Tagline API; they do not have access to the app’s DOM or Node.js. Review permissions and extension code before enabling an extension.</p>
-          <p><a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/extension-api.md">Read the complete Extension API reference ↗</a></p>
+          <p><a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/extension-api.md">Read the complete Extension API reference <span aria-hidden="true">↗</span></a></p>
 
           <h2 id="formats">Schemas and examples</h2>
           <p>The repository includes JSON Schemas for speech flows, themes, extension manifests, and exported extension settings. Canvases follow the standard JSON Canvas format. Use the schemas to validate your files or enable editor completion, and see the demo extension for a working example.</p>
@@ -80,7 +83,7 @@
       <p>A local-first workspace for policy debate.</p>
       <nav aria-label="Footer navigation">
         <a href="../index.html">Home</a>
-        <a href="./">Documentation</a>
+        <a href="index.html">Documentation</a>
         <a href="https://github.com/Julieisbaka/Tagline/tree/main/docs">Source docs</a>
       </nav>
     </footer>

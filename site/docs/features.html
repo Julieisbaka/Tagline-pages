@@ -17,7 +17,7 @@
       <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="../index.html#features">Features</a>
-        <a href="./" aria-current="location">Docs</a>
+        <a href="index.html" aria-current="location">Docs</a>
         <a href="https://github.com/Julieisbaka/Tagline">GitHub</a>
       </nav>
       <a class="button button-small button-outline" href="https://github.com/Julieisbaka/Tagline/releases/latest">
@@ -36,15 +36,22 @@
         <aside class="docs-sidebar">
           <h2>Guides</h2>
           <nav aria-label="Documentation">
-            <a href="./">Documentation home</a>
+            <a href="index.html">Documentation home</a>
             <a href="getting-started.html">Getting started</a>
             <a href="features.html" aria-current="page">Working in Tagline</a>
+            <a href="notes-and-evidence.html">Notes &amp; evidence</a>
+            <a href="search-and-citations.html">Search &amp; citations</a>
+            <a href="speech-workflows.html">Speech workflows</a>
             <a href="integrations.html">Integrations</a>
             <a href="customization.html">Themes &amp; extensions</a>
           </nav>
         </aside>
 
         <article class="docs-article">
+          <div class="docs-callout docs-feature-links">
+            <p><strong>Looking for a specific task?</strong> Step-by-step guides cover <a href="notes-and-evidence.html">notes and evidence</a>, <a href="search-and-citations.html">search and citations</a>, and <a href="speech-workflows.html">speech workflows</a>.</p>
+          </div>
+
           <h2 id="vaults">Vaults and notes</h2>
           <p>A vault is a folder on your device. Notes are Markdown files; speech grids use <code>.flow</code> files; visual canvases use <code>.canvas</code> files in the standard <a href="https://jsoncanvas.org/spec/1.0/">JSON Canvas format</a>. Settings and downloaded models live in the app profile, not in the vault.</p>
           <p>Tagline can keep revision history in <code>.tagline/history</code> inside the vault. Change retention in <strong>Settings &gt; Files and folders</strong>. Canvas history can preserve full layouts or content changes. If a flow or canvas becomes invalid, Tagline can offer recovery from the most recent working save.</p>
@@ -79,7 +86,7 @@ speech: true
       <p>A local-first workspace for policy debate.</p>
       <nav aria-label="Footer navigation">
         <a href="../index.html">Home</a>
-        <a href="./">Documentation</a>
+        <a href="index.html">Documentation</a>
         <a href="https://github.com/Julieisbaka/Tagline/tree/main/docs">Source docs</a>
       </nav>
     </footer>
