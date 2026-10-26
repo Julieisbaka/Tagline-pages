@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set up Tagline's optional Tabroom, OpenCaselist, local-model, and Google Docs integrations.">
+    <meta name="theme-color" content="#f8f7fc">
+    <title>Integrations — Tagline</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/docs.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../index.html#features">Features</a>
+        <a href="./" aria-current="location">Docs</a>
+        <a href="https://github.com/Julieisbaka/Tagline">GitHub</a>
+      </nav>
+      <a class="button button-small button-outline" href="https://github.com/Julieisbaka/Tagline/releases/latest">
+        Get Tagline <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <main id="main" class="docs-page section-wrap">
+      <div class="docs-hero">
+        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true">03</span> Optional connections</p>
+        <h1>Integrations</h1>
+        <p>Connect the tools that help with your workflow. Integrations are optional; choose when to sign in, download local models, or send a file.</p>
+      </div>
+
+      <div class="docs-shell">
+        <aside class="docs-sidebar">
+          <h2>Guides</h2>
+          <nav aria-label="Documentation">
+            <a href="./">Documentation home</a>
+            <a href="getting-started.html">Getting started</a>
+            <a href="features.html">Working in Tagline</a>
+            <a href="integrations.html" aria-current="page">Integrations</a>
+            <a href="customization.html">Themes &amp; extensions</a>
+          </nav>
+        </aside>
+
+        <article class="docs-article">
+          <h2 id="local-models">Local search and analysis models</h2>
+          <p>Download the embedding model in <strong>Settings &gt; Integrations</strong> to enable semantic or hybrid search. The optional hypothesis-testing and note-summary tools use separate models that run locally after download. These tools are on demand; they do not change the source note.</p>
+
+          <h2 id="tabroom">Tabroom tournaments</h2>
+          <p>Open <strong>Settings &gt; Integrations &gt; Open Tabroom</strong>, or use the “view and save tournament data” command. Enter a tournament ID or a Tabroom tournament URL containing <code>tourn_id</code>. Public tournament data can be read without signing in; signing in opens the official site in a separate, sandboxed window.</p>
+          <p>Review the tournament viewer before saving a JSON backup. Backups may contain personal or restricted data, so store and share them carefully. Tagline does not guess missing competitor or team IDs.</p>
+
+          <h2 id="opencaselist">OpenCaselist</h2>
+          <p>Open <strong>Settings &gt; Integrations &gt; Open OpenCaselist</strong>. Sign in on the official site in a separate window. You can browse caselists and disclosed materials, search a selected caselist, and add or edit rounds and citations. Downloaded files go into the current vault; existing files are not overwritten.</p>
+          <p>Team matching may require identity verification when available details are incomplete or ambiguous. Tagline labels those results rather than treating a name-only match as certain.</p>
+
+          <h2 id="google-docs">Google Docs and Drive</h2>
+          <p>Tagline offers direct Google sign-in and an optional Google Apps Script webhook. Both transfer a note or supported DOCX/HTML file into a <strong>new</strong> Google Doc in the selected account. Nothing is uploaded until you confirm the transfer.</p>
+          <h3>Direct Google sign-in</h3>
+          <ol>
+            <li>Open <strong>Settings &gt; Integrations &gt; Google Docs / Drive</strong>.</li>
+            <li>Choose <strong>Connect Google account</strong> and complete authorization in your system browser.</li>
+            <li>Confirm the account in Tagline, then select that account as the destination when exporting.</li>
+          </ol>
+          <p>Direct sign-in requests identity and per-file Drive access, not unrestricted access to your entire Drive. Credentials are protected in the local app profile, not stored in your vault or note settings.</p>
+          <h3>Apps Script webhook</h3>
+          <p>For a webhook connection, use <strong>Set up Google Docs transfer</strong> in Settings and follow the project’s <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/google-docs.md#set-up-an-apps-script-webhook">complete setup guide</a>. Review the bundled script before authorizing it. Use a unique webhook secret, store it securely, and select the correct executing account and destination folder.</p>
+          <div class="docs-callout docs-callout-warning">
+            <p><strong>Before connecting:</strong> review the scopes, script, and destination account. Disconnecting a saved connection removes its local credentials but does not revoke Google’s authorization grant; manage that grant in your Google Account.</p>
+          </div>
+
+          <h2 id="websites">Opening websites</h2>
+          <p>HTTP and HTTPS links open inside Tagline by default. You can turn off <strong>Open websites inside Tagline</strong> in <strong>Settings &gt; Integrations</strong> to use your default browser instead. Embedded websites cannot access the vault or app APIs; use an external browser for downloads.</p>
+
+          <p class="docs-source">Source guides: <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/features.md#local-analysis-and-summaries">Features: local analysis</a>, <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/features.md#tabroom-tournaments">Tabroom</a>, <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/features.md#opencaselist">OpenCaselist</a>, and <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/google-docs.md">Google Docs transfer</a>.</p>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
+      <p>A local-first workspace for policy debate.</p>
+      <nav aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="./">Documentation</a>
+        <a href="https://github.com/Julieisbaka/Tagline/tree/main/docs">Source docs</a>
+      </nav>
+    </footer>
+  </body>
+</html>
