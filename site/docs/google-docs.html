@@ -10,13 +10,15 @@
     <link rel="stylesheet" href="../styles/base.css">
     <link rel="stylesheet" href="../styles/docs.css">
     <link rel="stylesheet" href="../styles/responsive.css">
+    <script src="../scripts/highlight.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
+      <a class="brand" href="../index.html"><img class="brand-mark" src="../favicon.svg" alt="" aria-hidden="true"><span>Tagline</span></a>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="../index.html#features">Features</a>
+        <a href="../pricing.html">Pricing</a>
         <a href="index.html" aria-current="location">Docs</a>
         <a href="https://github.com/Julieisbaka/Tagline">GitHub</a>
       </nav>
@@ -66,7 +68,7 @@
 
           <section id="direct-sign-in">
             <p class="article-kicker">Option 1 / Recommended for most people</p>
-            <h2>Connect directly to Google</h2>
+            <h2>Connect directly to Google <span class="feature-status">(In development)</span></h2>
             <ol class="guide-steps">
               <li><span>Open <strong>Settings &gt; Integrations &gt; Google Docs / Drive</strong>.</span></li>
               <li><span>Select <strong>Connect Google account</strong>. Tagline opens Google authorization in your system browser.</span></li>
@@ -77,7 +79,7 @@
             <p>This method needs no webhook URL, API key, or shared secret. Tagline uploads directly to Google's Drive API and creates a new document in My Drive.</p>
             <p>The desktop OAuth client requests <code>openid</code>, <code>userinfo.email</code>, and <code>drive.file</code>. Drive access is limited to files created by or explicitly authorized for Tagline; it is not unrestricted access to the entire Drive.</p>
             <p>Refresh tokens are protected by operating-system credential encryption in the app profile. They are not stored in the vault or note settings, and are not exposed to the renderer. Access tokens stay in the main process while an operation runs.</p>
-            <p>Tagline uses PKCE, a random state value, and a temporary callback listener bound to <code>127.0.0.1</code>. The listener closes after sign-in, cancellation, or timeout. During development, only registered test accounts can connect while the Google Cloud OAuth audience is in Testing.</p>
+            <p>Tagline uses PKCE, a random state value, and a temporary callback listener bound to <code>127.0.0.1</code>. The listener closes after sign-in, cancellation, or timeout.</p>
             <p><strong>Disconnecting:</strong> Disconnect Google Docs removes the selected local connection and encrypted credentials, but does not revoke Google's authorization grant. To revoke it, remove Tagline from your <a href="https://myaccount.google.com/connections">Google Account connections</a>. If authorization expires or is revoked, Tagline displays a reconnect error. Uploads are not retried automatically because a network failure may leave document creation uncertain.</p>
           </section>
 
@@ -122,12 +124,12 @@
             <p>The webhook accepts a JSON <code>POST</code> request. Upload requests include the shared secret, the expected Google account, a title, MIME type, and base64-encoded file bytes. The separate <code>account</code> action verifies which account will execute a transfer without creating a document.</p>
             <p>Supported MIME types are UTF-8 HTML (<code>text/html</code>) and DOCX (<code>application/vnd.openxmlformats-officedocument.wordprocessingml.document</code>). Titles must contain 1–200 characters and no control characters. Content must be nonempty, standard padded base64 and decode to no more than 5 MiB. This endpoint accepts uploaded file content, not Google Doc URLs, <code>.gdoc</code> shortcuts, or arbitrary remote download URLs.</p>
             <p>Verify the executing account with a read-only request first:</p>
-            <pre><code>{
+            <pre><code class="language-json">{
   "secret": "&lt;your WEBHOOK_SECRET&gt;",
   "action": "account"
 }</code></pre>
             <p>An upload request includes the account email that Tagline confirmed:</p>
-            <pre><code>{
+            <pre><code class="language-json">{
   "secret": "&lt;your WEBHOOK_SECRET&gt;",
   "action": "upload",
   "expectedAccount": "you@example.com",
@@ -136,7 +138,7 @@
   "contentBase64": "&lt;standard base64-encoded file bytes&gt;"
 }</code></pre>
             <p>Successful account verification returns code <code>200</code>, <code>document: null</code>, and the executing account. A successful upload returns code <code>201</code> and the created document:</p>
-            <pre><code>{
+            <pre><code class="language-json">{
   "ok": true,
   "code": 201,
   "message": "Google Doc created.",
@@ -181,10 +183,11 @@
     </main>
 
     <footer class="site-footer">
-      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
+      <a class="brand" href="../index.html"><img class="brand-mark" src="../favicon.svg" alt="" aria-hidden="true"><span>Tagline</span></a>
       <p>A local-first workspace for policy debate.</p>
       <nav aria-label="Footer navigation">
         <a href="../index.html">Home</a>
+        <a href="../pricing.html">Pricing</a>
         <a href="index.html">Documentation</a>
         <a href="https://github.com/Julieisbaka/Tagline">App repository</a>
       </nav>

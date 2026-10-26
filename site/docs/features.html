@@ -10,13 +10,15 @@
     <link rel="stylesheet" href="../styles/base.css">
     <link rel="stylesheet" href="../styles/docs.css">
     <link rel="stylesheet" href="../styles/responsive.css">
+    <script src="../scripts/highlight.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
+      <a class="brand" href="../index.html"><img class="brand-mark" src="../favicon.svg" alt="" aria-hidden="true"><span>Tagline</span></a>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="../index.html#features">Features</a>
+        <a href="../pricing.html">Pricing</a>
         <a href="index.html" aria-current="location">Docs</a>
         <a href="https://github.com/Julieisbaka/Tagline">GitHub</a>
       </nav>
@@ -74,7 +76,7 @@
           <h2 id="speech-tools">Prepare speeches and flows</h2>
           <p>Send selected or highlighted evidence to the active speech document with <kbd>Ctrl+Shift+S</kbd> or <kbd>Cmd+Shift+S</kbd>. Tagline estimates speaking time from highlighted evidence and citations. Personal speech calibration in <strong>Settings &gt; General</strong> can tune estimates from your own timed samples.</p>
           <p>Mark a Markdown document as a speech document with the <strong>Set as speech doc</strong> file action. A new speech document uses this frontmatter:</p>
-          <pre><code>---
+          <pre><code class="language-yaml">---
 speech: true
 ---</code></pre>
           <p>Flows are multi-sheet speech grids. Use <kbd>Tab</kbd> and <kbd>Shift+Tab</kbd> to move between cells. Use <kbd>Ctrl+Enter</kbd>/<kbd>Cmd+Enter</kbd> to add a row below, and add one above with <kbd>Ctrl+Shift+Enter</kbd>/<kbd>Cmd+Shift+Enter</kbd>. In a canvas, connect arguments as supporting, answering, or contradicting one another.</p>
@@ -90,10 +92,11 @@ speech: true
     </main>
 
     <footer class="site-footer">
-      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
+      <a class="brand" href="../index.html"><img class="brand-mark" src="../favicon.svg" alt="" aria-hidden="true"><span>Tagline</span></a>
       <p>A local-first workspace for policy debate.</p>
       <nav aria-label="Footer navigation">
         <a href="../index.html">Home</a>
+        <a href="../pricing.html">Pricing</a>
         <a href="index.html">Documentation</a>
         <a href="https://github.com/Julieisbaka/Tagline">App repository</a>
       </nav>

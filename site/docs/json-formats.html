@@ -10,13 +10,15 @@
     <link rel="stylesheet" href="../styles/base.css">
     <link rel="stylesheet" href="../styles/docs.css">
     <link rel="stylesheet" href="../styles/responsive.css">
+    <script src="../scripts/highlight.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
+      <a class="brand" href="../index.html"><img class="brand-mark" src="../favicon.svg" alt="" aria-hidden="true"><span>Tagline</span></a>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="../index.html#features">Features</a>
+        <a href="../pricing.html">Pricing</a>
         <a href="index.html" aria-current="location">Docs</a>
         <a href="https://github.com/Julieisbaka/Tagline">GitHub</a>
       </nav>
@@ -95,7 +97,7 @@
             <h2>Enable validation and completion in VS Code</h2>
             <p>The Tagline repository includes VS Code settings that associate speech flows, bundled/demo themes, extension manifests, and exported settings with their schemas. When working in another workspace, copy the schemas together and define matching <code>json.schemas</code> associations.</p>
             <p>For example, this setting associates every <code>.flow</code> file in the workspace with a local copy of the flow schema:</p>
-            <pre><code>{
+            <pre><code class="language-json">{
   "json.schemas": [
     {
       "fileMatch": ["*.flow"],
@@ -109,7 +111,7 @@
           <section id="add-schema">
             <h2>Reference a schema from a file</h2>
             <p>Alternatively, add a <code>$schema</code> property near the top of a JSON document. This example assumes the JSON file sits beside a <code>schemas</code> folder:</p>
-            <pre><code>{
+            <pre><code class="language-json">{
   "$schema": "./schemas/flow.schema.json",
   "version": 1,
   "sheets": [
@@ -131,10 +133,11 @@
     </main>
 
     <footer class="site-footer">
-      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
+      <a class="brand" href="../index.html"><img class="brand-mark" src="../favicon.svg" alt="" aria-hidden="true"><span>Tagline</span></a>
       <p>A local-first workspace for policy debate.</p>
       <nav aria-label="Footer navigation">
         <a href="../index.html">Home</a>
+        <a href="../pricing.html">Pricing</a>
         <a href="index.html">Documentation</a>
         <a href="https://github.com/Julieisbaka/Tagline">App repository</a>
       </nav>

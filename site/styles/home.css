@@ -186,9 +186,8 @@ h1 span {
 .mini-mark {
   width: 20px;
   height: 20px;
+  margin-bottom: 4px;
   border-radius: 6px;
-  background: #7962e4;
-  font-size: 9px;
 }
 
 .sidebar-label {

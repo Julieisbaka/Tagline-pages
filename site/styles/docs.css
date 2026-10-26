@@ -143,6 +143,14 @@
   font-size: 16px;
 }
 
+.docs-article .feature-status {
+  color: var(--muted);
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
 .docs-article > h3 {
   margin-top: 25px;
 }
@@ -237,6 +245,43 @@
   padding: 0;
   border: 0;
   background: transparent;
+}
+
+.docs-article pre .token-comment {
+  color: #70747a;
+}
+
+.docs-article pre .token-key {
+  color: #5b3fc4;
+}
+
+.docs-article pre .token-string {
+  color: #176b50;
+}
+
+.docs-article pre .token-number {
+  color: #8a4b08;
+}
+
+.docs-article pre .token-boolean,
+.docs-article pre .token-command {
+  color: #1f6fb5;
+}
+
+.docs-article pre .token-command {
+  font-weight: 700;
+}
+
+.docs-article pre .token-keyword {
+  color: #7a3daf;
+}
+
+.docs-article pre .token-flag {
+  color: #805800;
+}
+
+.docs-article pre .token-punctuation {
+  color: #6b6f75;
 }
 
 .table-scroll {

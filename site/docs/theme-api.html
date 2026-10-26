@@ -10,13 +10,15 @@
     <link rel="stylesheet" href="../styles/base.css">
     <link rel="stylesheet" href="../styles/docs.css">
     <link rel="stylesheet" href="../styles/responsive.css">
+    <script src="../scripts/highlight.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
+      <a class="brand" href="../index.html"><img class="brand-mark" src="../favicon.svg" alt="" aria-hidden="true"><span>Tagline</span></a>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="../index.html#features">Features</a>
+        <a href="../pricing.html">Pricing</a>
         <a href="index.html" aria-current="location">Docs</a>
         <a href="https://github.com/Julieisbaka/Tagline">GitHub</a>
       </nav>
@@ -71,7 +73,7 @@
             </ol>
             <p>Import immediately selects the custom theme and saves it on this device. There is one standalone custom-theme slot; importing another theme replaces that slot. Use an extension to distribute multiple selectable themes.</p>
             <p>A minimal theme can override only a few colors; unspecified values come from the built-in light or dark base selected by <code>mode</code>.</p>
-            <pre><code>{
+            <pre><code class="language-json">{
   "version": 1,
   "name": "Ocean",
   "mode": "dark",
@@ -140,7 +142,7 @@
           <section id="variables">
             <h2>CSS-variable overrides</h2>
             <p>The optional <code>variables</code> object can set existing application variables and new custom properties used by custom CSS. Names omit the leading <code>--</code>; values are CSS values, not declarations.</p>
-            <pre><code>{
+            <pre><code class="language-json">{
   "version": 1,
   "name": "Large serif",
   "mode": "dark",
@@ -162,7 +164,7 @@
           <section id="metadata">
             <h2>Theme settings and metadata</h2>
             <p>A theme contributed by an extension can expose controls in Appearance without an extension script or permissions. Controls can set a color token or a property declared in <code>variables</code>.</p>
-            <pre><code>{
+            <pre><code class="language-json">{
   "settings": [
     {
       "id": "selection-color",
@@ -202,7 +204,7 @@
           <section id="extension-themes">
             <h2>Package themes in an extension</h2>
             <p>A theme-only extension needs no script. Put its manifest and theme JSON together:</p>
-            <pre><code>ocean-themes/
+            <pre><code class="language-bash">ocean-themes/
   manifest.json
   themes/
     ocean.json</code></pre>
@@ -215,10 +217,11 @@
     </main>
 
     <footer class="site-footer">
-      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">T</span><span>Tagline</span></a>
+      <a class="brand" href="../index.html"><img class="brand-mark" src="../favicon.svg" alt="" aria-hidden="true"><span>Tagline</span></a>
       <p>A local-first workspace for policy debate.</p>
       <nav aria-label="Footer navigation">
         <a href="../index.html">Home</a>
+        <a href="../pricing.html">Pricing</a>
         <a href="index.html">Documentation</a>
         <a href="https://github.com/Julieisbaka/Tagline">App repository</a>
       </nav>

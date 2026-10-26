@@ -104,12 +104,9 @@ a:focus-visible {
 
 .brand-mark,
 .mini-mark {
-  display: grid;
+  display: block;
   flex: 0 0 auto;
-  place-items: center;
-  background: var(--purple);
-  color: var(--white);
-  font-weight: 800;
+  object-fit: contain;
 }
 
 .brand-mark {
