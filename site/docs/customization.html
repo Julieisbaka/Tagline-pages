@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Customize Tagline with built-in themes, custom CSS, or sandboxed extensions.">
-    <meta name="theme-color" content="#f8f7fc">
+    <meta name="theme-color" content="#ffffff">
     <title>Themes and extensions — Tagline</title>
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles/base.css">
@@ -43,7 +43,10 @@
             <a href="search-and-citations.html">Search &amp; citations</a>
             <a href="speech-workflows.html">Speech workflows</a>
             <a href="integrations.html">Integrations</a>
+            <a href="google-docs.html">Google Docs transfer</a>
             <a href="customization.html" aria-current="page">Themes &amp; extensions</a>
+            <a href="theme-api.html">Theme format</a>
+            <a href="json-formats.html">JSON formats</a>
           </nav>
         </aside>
 
@@ -53,8 +56,7 @@
 
           <h2 id="themes">Create a theme</h2>
           <p>Themes are JSON color palettes with optional CSS custom-property overrides. Start with a built-in theme, choose <strong>Customize current theme</strong>, and adjust the palette. Export the result as JSON to keep or share it; import a JSON theme to apply it.</p>
-          <p>Tagline validates imported themes and displays import errors instead of partially applying invalid files. The repository’s theme guide lists the supported colors, variables, metadata, limits, and JSON schema.</p>
-          <p><a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/theme-api.md">Read the complete Theme API reference <span aria-hidden="true">↗</span></a></p>
+          <p>Tagline validates imported themes and displays import errors instead of partially applying invalid files. See the <a href="theme-api.html">theme format reference</a> for supported colors, variables, metadata, limits, and schema usage.</p>
 
           <h2 id="extensions">Install an extension</h2>
           <ol>
@@ -63,17 +65,17 @@
             <li>Choose <strong>Reload extensions</strong>, review the requested permissions, then enable the extension.</li>
           </ol>
           <p>Extensions can contribute commands, ribbon shortcuts, settings, themes, sidebar panels, and dialogs. Entry scripts run in a sandboxed worker through the supplied Tagline API; they do not have access to the app’s DOM or Node.js. Review permissions and extension code before enabling an extension.</p>
-          <p><a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/extension-api.md">Read the complete Extension API reference <span aria-hidden="true">↗</span></a></p>
+          <p>The full Extension API reference is still in the <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/extension-api.md">app repository</a> while it is being ported.</p>
 
           <h2 id="formats">Schemas and examples</h2>
           <p>The repository includes JSON Schemas for speech flows, themes, extension manifests, and exported extension settings. Canvases follow the standard JSON Canvas format. Use the schemas to validate your files or enable editor completion, and see the demo extension for a working example.</p>
           <ul>
-            <li><a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/json-formats.md">JSON formats and schemas</a></li>
+            <li><a href="json-formats.html">JSON formats and schemas</a></li>
             <li><a href="https://github.com/Julieisbaka/Tagline/tree/main/demo">Demo extension</a></li>
             <li><a href="https://github.com/Julieisbaka/Tagline/tree/main/schemas">Schema files</a></li>
           </ul>
 
-          <p class="docs-source">Source guides: <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/theme-api.md">Theme API</a>, <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/extension-api.md">Extension API</a>, and <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/json-formats.md">JSON formats</a>.</p>
+          <p class="docs-source">The <a href="theme-api.html">theme reference</a> and <a href="json-formats.html">JSON format guide</a> are now maintained on this site. The Extension API is the next technical reference to port.</p>
         </article>
       </div>
     </main>
@@ -84,7 +86,7 @@
       <nav aria-label="Footer navigation">
         <a href="../index.html">Home</a>
         <a href="index.html">Documentation</a>
-        <a href="https://github.com/Julieisbaka/Tagline/tree/main/docs">Source docs</a>
+        <a href="https://github.com/Julieisbaka/Tagline">App repository</a>
       </nav>
     </footer>
   </body>

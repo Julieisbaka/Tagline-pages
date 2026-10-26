@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Set up Tagline's optional Tabroom, OpenCaselist, local-model, and Google Docs integrations.">
-    <meta name="theme-color" content="#f8f7fc">
+    <meta name="theme-color" content="#ffffff">
     <title>Integrations — Tagline</title>
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles/base.css">
@@ -43,7 +43,10 @@
             <a href="search-and-citations.html">Search &amp; citations</a>
             <a href="speech-workflows.html">Speech workflows</a>
             <a href="integrations.html" aria-current="page">Integrations</a>
+            <a href="google-docs.html">Google Docs transfer</a>
             <a href="customization.html">Themes &amp; extensions</a>
+            <a href="theme-api.html">Theme format</a>
+            <a href="json-formats.html">JSON formats</a>
           </nav>
         </aside>
 
@@ -60,7 +63,7 @@
           <p>Team matching may require identity verification when available details are incomplete or ambiguous. Tagline labels those results rather than treating a name-only match as certain.</p>
 
           <h2 id="google-docs">Google Docs and Drive</h2>
-          <p>Tagline offers direct Google sign-in and an optional Google Apps Script webhook. Both transfer a note or supported DOCX/HTML file into a <strong>new</strong> Google Doc in the selected account. Nothing is uploaded until you confirm the transfer.</p>
+          <p>Tagline offers direct Google sign-in and an optional Google Apps Script webhook. Both transfer a note or supported DOCX/HTML file into a <strong>new</strong> Google Doc in the selected account. Nothing is uploaded until you confirm the transfer. Follow the <a href="google-docs.html">complete Google Docs setup and transfer guide</a>.</p>
           <h3>Direct Google sign-in</h3>
           <ol>
             <li>Open <strong>Settings &gt; Integrations &gt; Google Docs / Drive</strong>.</li>
@@ -69,7 +72,7 @@
           </ol>
           <p>Direct sign-in requests identity and per-file Drive access, not unrestricted access to your entire Drive. Credentials are protected in the local app profile, not stored in your vault or note settings.</p>
           <h3>Apps Script webhook</h3>
-          <p>For a webhook connection, use <strong>Set up Google Docs transfer</strong> in Settings and follow the project’s <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/google-docs.md#set-up-an-apps-script-webhook">complete setup guide</a>. Review the bundled script before authorizing it. Use a unique webhook secret, store it securely, and select the correct executing account and destination folder.</p>
+          <p>For a webhook connection, use <strong>Set up Google Docs transfer</strong> in Settings and follow the <a href="google-docs.html#webhook">step-by-step Apps Script setup</a>. Review the bundled script before authorizing it. Use a unique webhook secret, store it securely, and select the correct executing account and destination folder.</p>
           <div class="docs-callout docs-callout-warning">
             <p><strong>Before connecting:</strong> review the scopes, script, and destination account. Disconnecting a saved connection removes its local credentials but does not revoke Google’s authorization grant; manage that grant in your Google Account.</p>
           </div>
@@ -77,7 +80,7 @@
           <h2 id="websites">Opening websites</h2>
           <p>HTTP and HTTPS links open inside Tagline by default. You can turn off <strong>Open websites inside Tagline</strong> in <strong>Settings &gt; Integrations</strong> to use your default browser instead. Embedded websites cannot access the vault or app APIs; use an external browser for downloads.</p>
 
-          <p class="docs-source">Source guides: <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/features.md#local-analysis-and-summaries">Features: local analysis</a>, <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/features.md#tabroom-tournaments">Tabroom</a>, <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/features.md#opencaselist">OpenCaselist</a>, and <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/google-docs.md">Google Docs transfer</a>.</p>
+          <p class="docs-source">For the complete account setup and transfer flow, continue to the <a href="google-docs.html">Google Docs guide</a>. App source and releases are available from the <a href="https://github.com/Julieisbaka/Tagline">Tagline repository</a>.</p>
         </article>
       </div>
     </main>
@@ -88,7 +91,7 @@
       <nav aria-label="Footer navigation">
         <a href="../index.html">Home</a>
         <a href="index.html">Documentation</a>
-        <a href="https://github.com/Julieisbaka/Tagline/tree/main/docs">Source docs</a>
+        <a href="https://github.com/Julieisbaka/Tagline">App repository</a>
       </nav>
     </footer>
   </body>

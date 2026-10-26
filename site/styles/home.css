@@ -17,7 +17,7 @@
   align-items: center;
   gap: 9px;
   margin: 0 0 18px;
-  color: #6e6782;
+  color: #6b6f75;
   font-size: 10px;
   font-weight: 750;
   letter-spacing: 1.2px;
@@ -29,8 +29,8 @@
   width: 22px;
   height: 22px;
   place-items: center;
-  border-radius: 7px;
-  background: #eee9ff;
+  border-radius: 4px;
+  background: #6b4fd826;
   color: var(--purple);
   font-size: 13px;
 }
@@ -61,7 +61,7 @@ h1 span {
 }
 
 .text-link {
-  color: #514c61;
+  color: #41464b;
   font-size: 11px;
   font-weight: 700;
   transition: color 160ms ease;
@@ -478,39 +478,39 @@ h2 {
 .feature-card {
   min-height: 206px;
   padding: 22px 21px;
-  border: 1px solid #e9e6ef;
-  border-radius: 11px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
   background: #fff;
-  transition: transform 170ms ease, box-shadow 170ms ease;
+  transition: background-color 140ms ease, border-color 140ms ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px #34235c0e;
+  border-color: #b7b7b7;
+  background: #f6f6f6;
 }
 
 .card-lavender {
-  background: #f1edff;
+  background: #fff;
 }
 
 .card-yellow {
-  background: #fff8e7;
+  background: #fff;
 }
 
 .card-blue {
-  background: #edf5ff;
+  background: #fff;
 }
 
 .card-green {
-  background: #edf7f0;
+  background: #fff;
 }
 
 .card-peach {
-  background: #fff1e9;
+  background: #fff;
 }
 
 .card-rose {
-  background: #fff0f4;
+  background: #fff;
 }
 
 .feature-icon {
@@ -520,9 +520,9 @@ h2 {
   margin-bottom: 17px;
   place-items: center;
   border: 1px solid #ffffffbd;
-  border-radius: 10px;
-  background: #ffffffa8;
-  color: #5540b2;
+  border-radius: 4px;
+  background: #6b4fd826;
+  color: #4b36a5;
   font-size: 16px;
 }
 
@@ -550,8 +550,9 @@ h2 {
 
 .local-first {
   overflow: hidden;
-  background: #29214d;
-  color: var(--white);
+  border-block: 1px solid var(--line);
+  background: #f6f6f6;
+  color: var(--ink);
 }
 
 .local-inner {
@@ -576,9 +577,9 @@ h2 {
   position: absolute;
   width: 250px;
   height: 175px;
-  border: 1px solid #c3b6ff45;
-  border-radius: 16px;
-  background: #8272d82e;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #ececec;
   transform: rotate(-9deg);
 }
 
@@ -590,10 +591,10 @@ h2 {
   flex-direction: column;
   gap: 9px;
   padding: 17px;
-  border: 1px solid #ffffff26;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #443970, #362d5e);
-  box-shadow: 0 22px 45px #17132f52;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 8px 20px #00000012;
   transform: rotate(4deg);
 }
 
@@ -603,14 +604,14 @@ h2 {
   height: 24px;
   margin-bottom: 3px;
   place-items: center;
-  border-radius: 7px;
-  background: #8771ec;
+  border-radius: 4px;
+  background: var(--purple);
   font-size: 11px;
   font-weight: 800;
 }
 
 .folder-front > span:nth-child(2) {
-  color: #d9d3ef;
+  color: #6b6f75;
   font-size: 7px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -618,9 +619,9 @@ h2 {
 
 .folder-front i {
   padding: 6px 8px;
-  border-radius: 5px;
-  background: #ffffff0b;
-  color: #e1ddee;
+  border-radius: 4px;
+  background: #f6f6f6;
+  color: #41464b;
   font-size: 8px;
   font-style: normal;
 }
@@ -645,7 +646,7 @@ h2 {
 }
 
 .local-copy .eyebrow {
-  color: #cdc4f2;
+  color: #6b6f75;
 }
 
 .local-copy h2 {
@@ -655,7 +656,7 @@ h2 {
 .local-copy > p:not(.eyebrow) {
   max-width: 450px;
   margin-bottom: 11px;
-  color: #d1cde0;
+  color: #4d5257;
   font-size: 11px;
   line-height: 1.8;
 }
@@ -663,7 +664,7 @@ h2 {
 .local-copy .text-link {
   display: inline-block;
   margin-top: 8px;
-  color: #d5caff;
+  color: #5b3fc4;
 }
 
 .workflow {
@@ -684,7 +685,7 @@ h2 {
   min-height: 140px;
   padding: 19px;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 4px;
   background: #fff;
 }
 
@@ -710,7 +711,8 @@ h2 {
 }
 
 .download {
-  background: #eeeafd;
+  border-bottom: 1px solid var(--line);
+  background: #f6f6f6;
 }
 
 .download-inner {
@@ -731,7 +733,7 @@ h2 {
 
 .download-inner > div:first-child > p:last-child {
   margin-bottom: 0;
-  color: #6d687b;
+  color: #6b6f75;
   font-size: 11px;
   line-height: 1.7;
 }
@@ -749,11 +751,11 @@ h2 {
 }
 
 .button-download:hover {
-  background: #5942c4;
+  background: #5b3fc4;
 }
 
 .download-secondary {
-  color: #5140a0;
+  color: #5b3fc4;
   font-size: 10px;
   font-weight: 700;
 }
