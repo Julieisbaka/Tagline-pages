@@ -28,6 +28,12 @@
   background: #fff;
   box-shadow: 0 16px 42px #29214d18, 0 2px 8px #29214d0c;
   transform: none;
+  transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 220ms ease;
+}
+
+.app-preview:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 50px #29214d20, 0 3px 10px #29214d0c;
 }
 
 .app-content {
@@ -68,11 +74,23 @@
   border-radius: 4px;
   color: #6b6f75;
   font-size: 12px;
+  transition: transform 140ms ease, background-color 140ms ease, color 140ms ease;
+}
+
+.ribbon-button:hover {
+  transform: scale(1.06);
+  background: #ececec;
+  color: #2e3338;
 }
 
 .ribbon-active {
   background: #6b4fd826;
   color: #6b4fd8;
+}
+
+.ribbon-active:hover {
+  background: #6b4fd838;
+  color: #5a3fc1;
 }
 
 .ribbon-settings {
@@ -113,6 +131,14 @@
   place-items: center;
   color: #6b6f75;
   font-size: 10px;
+  border-radius: 4px;
+  transition: transform 140ms ease, background-color 140ms ease, color 140ms ease;
+}
+
+.sidebar-action:hover {
+  transform: translateY(-1px);
+  background: #ececec;
+  color: #2e3338;
 }
 
 .file-tree {
@@ -132,6 +158,12 @@
   color: #6b6f75;
   font-size: 8px;
   white-space: nowrap;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.file-row:not(.folder-row):hover {
+  background: #ececec;
+  color: #2e3338;
 }
 
 .folder-row {
@@ -149,6 +181,10 @@
 .selected-file {
   background: #6b4fd826;
   color: #111;
+}
+
+.selected-file:hover {
+  background: #6b4fd838;
 }
 
 .tree-chevron {
@@ -174,6 +210,11 @@
   color: #2e3338;
   font-size: 8px;
   font-weight: 600;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.vault-switch:hover {
+  background: #ececec;
 }
 
 .vault-name {
@@ -213,6 +254,12 @@
   border-right: 1px solid #ddd;
   color: #6b6f75;
   font-size: 8px;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.tab-item:not(.active):hover {
+  background: #ececec;
+  color: #2e3338;
 }
 
 .tab-item.active {
@@ -259,6 +306,13 @@
   border-radius: 4px;
   color: #6b6f75;
   font-size: 10px;
+  transition: transform 140ms ease, background-color 140ms ease, color 140ms ease;
+}
+
+.note-action:hover {
+  transform: translateY(-1px);
+  background: #ececec;
+  color: #2e3338;
 }
 
 .mode-select {
@@ -271,6 +325,12 @@
   color: #2e3338;
   font-size: 7px;
   white-space: nowrap;
+  transition: border-color 140ms ease, background-color 140ms ease;
+}
+
+.mode-select:hover {
+  border-color: #c9c9c9;
+  background: #f6f6f6;
 }
 
 .note-viewport {
@@ -439,5 +499,11 @@
   .status-bar {
     gap: 2px 7px;
     padding-inline: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-preview:hover {
+    transform: none;
   }
 }
