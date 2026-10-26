@@ -120,6 +120,37 @@
           <section id="response-codes">
             <h2>Webhook response codes</h2>
             <p>The webhook accepts a JSON <code>POST</code> request. Upload requests include the shared secret, the expected Google account, a title, MIME type, and base64-encoded file bytes. The separate <code>account</code> action verifies which account will execute a transfer without creating a document.</p>
+            <p>Supported MIME types are UTF-8 HTML (<code>text/html</code>) and DOCX (<code>application/vnd.openxmlformats-officedocument.wordprocessingml.document</code>). Titles must contain 1–200 characters and no control characters. Content must be nonempty, standard padded base64 and decode to no more than 5 MiB. This endpoint accepts uploaded file content, not Google Doc URLs, <code>.gdoc</code> shortcuts, or arbitrary remote download URLs.</p>
+            <p>Verify the executing account with a read-only request first:</p>
+            <pre><code>{
+  "secret": "&lt;your WEBHOOK_SECRET&gt;",
+  "action": "account"
+}</code></pre>
+            <p>An upload request includes the account email that Tagline confirmed:</p>
+            <pre><code>{
+  "secret": "&lt;your WEBHOOK_SECRET&gt;",
+  "action": "upload",
+  "expectedAccount": "you@example.com",
+  "title": "Evidence",
+  "mimeType": "text/html",
+  "contentBase64": "&lt;standard base64-encoded file bytes&gt;"
+}</code></pre>
+            <p>Successful account verification returns code <code>200</code>, <code>document: null</code>, and the executing account. A successful upload returns code <code>201</code> and the created document:</p>
+            <pre><code>{
+  "ok": true,
+  "code": 201,
+  "message": "Google Doc created.",
+  "account": {
+    "email": "you@example.com",
+    "displayName": "Your name"
+  },
+  "document": {
+    "id": "&lt;new Google Doc ID&gt;",
+    "title": "Evidence",
+    "url": "https://docs.google.com/document/d/&lt;new Google Doc ID&gt;/edit"
+  }
+}</code></pre>
+            <p>Every script-generated error uses <code>ok: false</code>, a numeric <code>code</code>, a descriptive <code>message</code>, <code>document: null</code>, and <code>account: null</code>. The account is obtained from Drive's authenticated account lookup, not from the active browser user or a manually entered label. An incorrect secret cannot retrieve account information.</p>
             <div class="table-scroll">
               <table>
                 <thead><tr><th>Code</th><th>Meaning</th></tr></thead>
