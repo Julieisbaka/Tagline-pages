@@ -48,6 +48,7 @@
             <a href="google-docs.html">Google Docs transfer</a>
             <a href="customization.html" aria-current="page">Themes &amp; extensions</a>
             <a href="theme-api.html">Theme format</a>
+            <a href="extension-api.html">Extension API</a>
             <a href="json-formats.html">JSON formats</a>
           </nav>
         </aside>
@@ -67,7 +68,7 @@
             <li>Choose <strong>Reload extensions</strong>, review the requested permissions, then enable the extension.</li>
           </ol>
           <p>Extensions can contribute commands, ribbon shortcuts, settings, themes, sidebar panels, and dialogs. Entry scripts run in a sandboxed worker through the supplied Tagline API; they do not have access to the app’s DOM or Node.js. Review permissions and extension code before enabling an extension.</p>
-          <p>The full Extension API reference is still in the <a href="https://github.com/Julieisbaka/Tagline/blob/main/docs/extension-api.md">app repository</a> while it is being ported.</p>
+          <p>See the <a href="extension-api.html">Extension API reference</a> for the manifest, permission model, JavaScript bridge, vault access, and UI contributions.</p>
 
           <h2 id="formats">Schemas and examples</h2>
           <p>The repository includes JSON Schemas for speech flows, themes, extension manifests, and exported extension settings. Canvases follow the standard JSON Canvas format. Use the schemas to validate your files or enable editor completion, and see the demo extension for a working example.</p>
@@ -77,7 +78,7 @@
             <li><a href="https://github.com/Julieisbaka/Tagline/tree/main/schemas">Schema files</a></li>
           </ul>
 
-          <p class="docs-source">The <a href="theme-api.html">theme reference</a> and <a href="json-formats.html">JSON format guide</a> are now maintained on this site. The Extension API is the next technical reference to port.</p>
+          <p class="docs-source">Read the <a href="theme-api.html">theme reference</a>, <a href="extension-api.html">Extension API</a>, and <a href="json-formats.html">JSON format guide</a> for the complete developer documentation.</p>
         </article>
       </div>
     </main>
