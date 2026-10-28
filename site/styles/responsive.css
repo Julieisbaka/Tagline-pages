@@ -18,6 +18,7 @@
 }
 
 @media (max-width: 680px) {
+
   .site-header,
   .site-footer,
   .section-wrap {
@@ -32,7 +33,7 @@
     display: none;
   }
 
-  .site-header > .button {
+  .site-header>.button {
     min-height: 37px;
     padding-inline: 12px;
     font-size: 9px;
@@ -110,7 +111,7 @@
     padding-inline: 18px;
   }
 
-  .proof-strip > div {
+  .proof-strip>div {
     flex: 1 1 130px;
   }
 
@@ -183,7 +184,7 @@
     padding-block: 22px;
   }
 
-  .site-footer > p {
+  .site-footer>p {
     flex: 1 1 100%;
     order: 1;
   }
@@ -196,6 +197,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

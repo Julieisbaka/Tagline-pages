@@ -133,7 +133,7 @@ a:focus-visible {
 .main-nav a:hover,
 .site-footer nav a:hover,
 .text-link:hover,
-.feature-card > a:hover {
+.feature-card>a:hover {
   color: var(--purple);
 }
 

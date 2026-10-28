@@ -418,7 +418,7 @@ h1 span {
   font-size: 11px;
 }
 
-.proof-strip > div {
+.proof-strip>div {
   display: flex;
   align-items: center;
   gap: 9px;
@@ -460,7 +460,7 @@ h2 {
   line-height: 1.14;
 }
 
-.section-heading > p:last-child {
+.section-heading>p:last-child {
   max-width: 460px;
   margin: 0 auto;
   color: var(--muted);
@@ -540,7 +540,7 @@ h2 {
   line-height: 1.7;
 }
 
-.feature-card > a {
+.feature-card>a {
   color: #4e3aa9;
   font-size: 9px;
   font-weight: 750;
@@ -609,7 +609,7 @@ h2 {
   font-weight: 800;
 }
 
-.folder-front > span:nth-child(2) {
+.folder-front>span:nth-child(2) {
   color: #6b6f75;
   font-size: 7px;
   font-weight: 700;
@@ -652,7 +652,7 @@ h2 {
   margin-bottom: 15px;
 }
 
-.local-copy > p:not(.eyebrow) {
+.local-copy>p:not(.eyebrow) {
   max-width: 450px;
   margin-bottom: 11px;
   color: #4d5257;
@@ -730,7 +730,7 @@ h2 {
   font-size: clamp(27px, 3.5vw, 39px);
 }
 
-.download-inner > div:first-child > p:last-child {
+.download-inner>div:first-child>p:last-child {
   margin-bottom: 0;
   color: #6b6f75;
   font-size: 11px;
@@ -759,7 +759,7 @@ h2 {
   font-weight: 700;
 }
 
-.download-actions > p {
+.download-actions>p {
   max-width: 310px;
   margin: 3px 0 0;
   color: #625d70;
@@ -773,7 +773,7 @@ h2 {
   border-top: 1px solid var(--line);
 }
 
-.site-footer > p {
+.site-footer>p {
   margin: 0;
   color: var(--muted);
   font-size: 10px;

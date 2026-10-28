@@ -102,7 +102,7 @@
   color: var(--purple);
 }
 
-.error-copy > p:not(.eyebrow, .error-code) {
+.error-copy>p:not(.eyebrow, .error-code) {
   max-width: 420px;
   margin-bottom: 25px;
   color: var(--muted);
@@ -151,6 +151,7 @@
 }
 
 @keyframes error-float {
+
   0%,
   100% {
     transform: translateY(0);
@@ -204,6 +205,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .error-art,
   .error-copy {
     animation: none;
