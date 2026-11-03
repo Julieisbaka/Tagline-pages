@@ -152,9 +152,13 @@
             eight-digit form is alpha. Shorthand hex, named colors, <code>rgb()</code>, <code>var()</code>, gradients,
             and arbitrary CSS values are rejected. Unknown color tokens are rejected; an empty <code>colors</code>
             object is valid. Import errors are shown instead of partially applying a theme.</p>
-          <p>The Appearance picker and extension loader share a configurable <strong>Theme file bytes</strong> limit:
-            65,536 bytes by default, adjustable from 1,024 to 1,048,576 in <strong>Settings &gt; Advanced settings &gt;
-              Theme and extension limits</strong>. For portability, keep shared theme files at or below the default.</p>
+          <p>The Appearance picker and extension loader enforce a configurable <strong>Theme file bytes</strong> limit
+            on each theme file: 65,536 bytes by default, adjustable from 1,024 to 1,048,576. The extension loader also
+            enforces a configurable <strong>Theme preview bytes</strong> limit on the aggregate JSON size of all
+            contributed theme files loaded from one extension: 524,288 bytes by default, adjustable from 1,024 to
+            4,194,304. Both limits are in <strong>Settings &gt; Advanced settings &gt; Theme and extension
+              limits</strong>, and the per-file limit applies independently of the aggregate limit. For portability,
+            keep shared theme files within both limits.</p>
           <p>Use the <a href="https://github.com/Julieisbaka/Tagline/blob/main/schemas/theme.schema.json">theme JSON
               schema</a> for validation and editor completion.</p>
         </section>

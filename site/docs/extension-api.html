@@ -126,10 +126,11 @@
             <li><code>ui</code></li>
             <li><code>network</code></li>
           </ul>
-          <p>Tagline computes a review signature from the manifest’s declared permissions (sorted), settings, ribbon
-            items, panels, and webviews, then derives a SHA-256 token from that value. Reloading extensions recomputes
-            the token and compares it with the stored approval. Changing any reviewed field invalidates the approval;
-            for example, adding <code>network</code> or changing a declared setting requires a new review.</p>
+          <p>Tagline computes a review signature from the manifest’s declared permissions (sorted), network hosts,
+            settings, ribbon items, panels, and webviews, then derives a SHA-256 token from that value. Reloading
+            extensions recomputes the token and compares it with the stored approval. Changing any reviewed field
+            invalidates the approval; for example, adding <code>network</code>, changing <code>networkHosts</code>, or
+            changing a declared setting requires a new review.</p>
           <p>Only <strong>Settings &gt; Extensions</strong> can enable or approve an extension, and enabling requires the
             token for its current manifest. A missing or stale token is rejected with
             <q>Extension permissions or settings changed. Reload and review before enabling.</q> After a successful
@@ -141,9 +142,9 @@
             enable it again. Extensions that declare a gated capability but have no stored approval—including
             extensions installed before reviews were introduced—also need review. The native menu can open
             <strong>Settings &gt; Extensions</strong> only; it cannot enable or approve an extension.</p>
-          <p><code>network</code> is review-gated but grants nothing today. It is reserved for a future host-mediated
-            network API. The sandbox CSP still blocks network requests and external resources, and enabling an
-            extension that declares <code>network</code> does not open a connection.</p>
+          <p>An extension declaring <code>network</code> must also declare <code>networkHosts</code>, a list of exact
+            lowercase hostnames. Tagline includes this list in the review signature and shows it in
+            <strong>Settings &gt; Extensions</strong>. Review the requested hosts before approving the extension.</p>
         </section>
 
         <section id="minimal">
@@ -226,6 +227,11 @@
                   </td>
                 </tr>
                 <tr>
+                  <td><code>networkHosts</code></td>
+                  <td>Required when <code>permissions</code> includes <code>network</code>. List the exact lowercase
+                    hostnames the extension needs; the list is reviewed and included in the approval signature.</td>
+                </tr>
+                <tr>
                   <td><code>contributes.commands</code></td>
                   <td>Up to 50 declarations; each has a unique ID and nonblank title (up to 80 characters). Requires
                     <code>main</code>.
@@ -255,8 +261,10 @@
           </div>
           <p>Contribution IDs use the extension-ID character rules. Paths must remain inside the extension folder;
             absolute paths, traversal, and symlinks resolving outside it are rejected. Default file limits are 1 MiB for
-            scripts and 64 KiB for contributed themes. Limits are adjustable within fixed bounds in <strong>Settings
-              &gt; Advanced settings &gt; Theme and extension limits</strong>.</p>
+            scripts and 64 KiB per contributed theme. The aggregate JSON size of theme files loaded from one extension
+            is limited to 524,288 bytes by default; this <strong>Theme preview bytes</strong> limit can be adjusted from
+            1,024 to 4,194,304 bytes. Per-file limits apply independently. Limits are adjustable within fixed bounds in
+            <strong>Settings &gt; Advanced settings &gt; Theme and extension limits</strong>.</p>
           <p>Invalid manifests and load failures are shown in extension settings. A script must finish initialization
             within 10 seconds. See the <a href="json-formats.html">JSON formats guide</a> for schema validation and
             editor completion.</p>
@@ -310,7 +318,8 @@
                 </tr>
                 <tr>
                   <td><code>network</code></td>
-                  <td>Reserved for a future host-mediated network API; grants no network access today.</td>
+                  <td>Use <code>tagline.network.fetch()</code> for host-mediated HTTPS <code>GET</code>/<code>POST</code>
+                    requests to hosts declared in <code>networkHosts</code>.</td>
                 </tr>
                 <tr>
                   <td>None</td>
@@ -320,10 +329,14 @@
               </tbody>
             </table>
           </div>
-          <p>Undeclared permission checks reject API calls. Extensions have no direct Node.js, Electron API, application
-            DOM, profile storage, arbitrary filesystem, or network access. The sandbox blocks network requests and
-            external resources. See <a href="#review">Review before enabling</a> for the manifest approval required
-            for gated capabilities.</p>
+          <p>Undeclared permission checks reject API calls. For every network request, the main process rechecks that
+            the extension is enabled and its manifest still declares the permission and requested host. Requests reject
+            local or private DNS results, embedded URL credentials, non-HTTPS schemes, non-default ports, cookies,
+            automatic redirects, and compressed responses. Requests are limited to 10 per second, request and response
+            bodies of 1,000,000 bytes each, and a 15-second timeout. The extension worker and webviews have no direct
+            network access. Extensions also have no direct Node.js, Electron API, application DOM, profile storage, or
+            arbitrary filesystem access. See <a href="#review">Review before enabling</a> for the manifest approval
+            required for gated capabilities.</p>
           <ul>
             <li>Workers keep synchronous extension loops off the application UI thread. A supervisor stops a worker that
               misses heartbeats for 5 seconds; startup has a 10-second deadline.</li>
