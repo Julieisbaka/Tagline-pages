@@ -81,6 +81,9 @@
         <p>Extensions can contribute commands, ribbon shortcuts, settings, themes, sidebar panels, and dialogs. Entry
           scripts run in a sandboxed worker through the supplied Tagline API; they do not have access to the app’s DOM
           or Node.js. Review permissions and extension code before enabling an extension.</p>
+        <p>Extensions that declare review-gated capabilities require approval of the current manifest before they can
+          be enabled. If a reviewed manifest changes, its approval is invalidated and the extension remains disabled
+          until reviewed again. See <a href="extension-api.html#review">Review before enabling</a> for details.</p>
         <p>See the <a href="extension-api.html">Extension API reference</a> for the manifest, permission model,
           JavaScript bridge, vault access, and UI contributions.</p>
 
