@@ -86,6 +86,10 @@
           until reviewed again. See <a href="extension-api.html#review">Review before enabling</a> for details.</p>
         <p>See the <a href="extension-api.html">Extension API reference</a> for the manifest, permission model,
           JavaScript bridge, vault access, and UI contributions.</p>
+        <p>Extensions can store encrypted credentials with the review-gated
+          <a href="extension-api.html#secrets"><code>secrets</code> permission</a>. To remove an extension's saved
+          secrets, select <strong>Clear stored secrets</strong> on its card in <strong>Settings &gt; Extensions</strong>.
+          Disabling the extension blocks access but does not delete its secrets.</p>
 
         <h2 id="formats">Schemas and examples</h2>
         <p>The repository includes JSON Schemas for speech flows, themes, extension manifests, and exported extension
