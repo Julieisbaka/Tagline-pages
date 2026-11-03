@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-    content="Set up Tagline's optional Tabroom, OpenCaselist, local-model, and Google Docs integrations.">
+    content="Set up Tagline's optional Tabroom, OpenCaselist, local-model, Google Docs, and MCP integrations.">
   <meta name="theme-color" content="#ffffff">
   <title>Integrations — Tagline</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -36,7 +36,7 @@
       <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true">03</span> Optional connections</p>
       <h1>Integrations</h1>
       <p>Connect the tools that help with your workflow. Integrations are optional; choose when to sign in, download
-        local models, or send a file.</p>
+        local models, send a file, or give an AI client access to Tagline.</p>
     </div>
 
     <div class="docs-shell">
@@ -59,6 +59,25 @@
       </aside>
 
       <article class="docs-article">
+        <h2 id="agent-access">Agent access (MCP)</h2>
+        <p>Tagline can share notes with compatible AI clients through its local Model Context Protocol (MCP) server.
+          Open <strong>Settings &gt; Integrations &gt; Agent access (MCP)</strong> and enable it. Copy the configuration
+          snippet for your client: VS Code (<code>.vscode/mcp.json</code>), Copilot CLI
+          (<code>~/.copilot/mcp-config.json</code>), or Claude Code (use <code>claude mcp add</code>). Claude Desktop
+          requires <code>npx mcp-remote</code>.</p>
+        <p>The local endpoint is <code>http://127.0.0.1:38419/mcp</code>. Requests use an
+          <code>Authorization:</code> <code>Bearer</code> <code>&lt;token&gt;</code> header; keep the token private.</p>
+        <p>Available tools:</p>
+        <ul>
+          <li><strong>Read:</strong> <code>get_status</code>, <code>list_notes</code>, <code>read_note</code>,
+            <code>get_outline</code>, and <code>search_notes</code>.</li>
+          <li><strong>Write:</strong> <code>write_note</code>, <code>append_to_note</code>,
+            <code>create_folder</code>, <code>rename_path</code>, and <code>delete_path</code>. Deleting moves the
+            item to the operating system trash.</li>
+          <li><strong>UI:</strong> <code>open_note</code>.</li>
+        </ul>
+        <p>The server also provides the <code>tagline://note/</code> resource.</p>
+
         <h2 id="local-models">Local search and analysis models</h2>
         <p>Download the embedding model in <strong>Settings &gt; Integrations</strong> to enable semantic or hybrid
           search. The optional hypothesis-testing and note-summary tools use separate models that run locally after
