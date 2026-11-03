@@ -62,6 +62,7 @@
         <nav class="article-toc" aria-label="On this page">
           <span>On this page</span>
           <a href="#install">Install and reload</a>
+          <a href="#review">Review before enabling</a>
           <a href="#minimal">Minimal command</a>
           <a href="#manifest">Manifest</a>
           <a href="#permissions">Permissions and isolation</a>
@@ -112,6 +113,37 @@
           <p>This example needs <code>ui</code> permission and a declared <code>welcome</code> webview. Entry evaluation
             and setup share the startup deadline (10 seconds by default); show onboarding and return rather than waiting
             for the user to finish it.</p>
+        </section>
+
+        <section id="review">
+          <h2>Review before enabling</h2>
+          <p>Enabling an extension that declares any of these capabilities requires an explicit review of its
+            manifest:</p>
+          <ul>
+            <li><code>settings</code></li>
+            <li><code>editor:active-note</code></li>
+            <li><code>events</code></li>
+            <li><code>ui</code></li>
+            <li><code>network</code></li>
+          </ul>
+          <p>Tagline computes a review signature from the manifest’s declared permissions (sorted), settings, ribbon
+            items, panels, and webviews, then derives a SHA-256 token from that value. Reloading extensions recomputes
+            the token and compares it with the stored approval. Changing any reviewed field invalidates the approval;
+            for example, adding <code>network</code> or changing a declared setting requires a new review.</p>
+          <p>Only <strong>Settings &gt; Extensions</strong> can enable or approve an extension, and enabling requires the
+            token for its current manifest. A missing or stale token is rejected with
+            <q>Extension permissions or settings changed. Reload and review before enabling.</q> After a successful
+            enable, the approval signature is stored in <code>extensionReviews</code> in the app’s
+            <code>config.json</code>. On every launch and reload, Tagline scans each manifest and checks its stored
+            approval again.</p>
+          <p>If an approval no longer matches, the extension is treated as disabled: its host does not start, its
+            commands are unavailable, and its selectable themes fall back to the default palette until you review and
+            enable it again. Extensions that declare a gated capability but have no stored approval—including
+            extensions installed before reviews were introduced—also need review. The native menu can open
+            <strong>Settings &gt; Extensions</strong> only; it cannot enable or approve an extension.</p>
+          <p><code>network</code> is review-gated but grants nothing today. It is reserved for a future host-mediated
+            network API. The sandbox CSP still blocks network requests and external resources, and enabling an
+            extension that declares <code>network</code> does not open a connection.</p>
         </section>
 
         <section id="minimal">
@@ -189,8 +221,8 @@
                 <tr>
                   <td><code>permissions</code></td>
                   <td>Optional array of <code>editor</code>, <code>editor:active-note</code>, <code>settings</code>,
-                    <code>vault:read</code>, <code>vault:write</code>, <code>events</code>, or <code>ui</code>. Defaults
-                    to <code>[]</code>.
+                    <code>vault:read</code>, <code>vault:write</code>, <code>events</code>, <code>ui</code>, or
+                    <code>network</code>. Defaults to <code>[]</code>.
                   </td>
                 </tr>
                 <tr>
@@ -277,6 +309,10 @@
                   </td>
                 </tr>
                 <tr>
+                  <td><code>network</code></td>
+                  <td>Reserved for a future host-mediated network API; grants no network access today.</td>
+                </tr>
+                <tr>
                   <td>None</td>
                   <td>Register declared commands, notify the user, use private extension storage, and contribute JSON
                     themes.</td>
@@ -286,7 +322,8 @@
           </div>
           <p>Undeclared permission checks reject API calls. Extensions have no direct Node.js, Electron API, application
             DOM, profile storage, arbitrary filesystem, or network access. The sandbox blocks network requests and
-            external resources.</p>
+            external resources. See <a href="#review">Review before enabling</a> for the manifest approval required
+            for gated capabilities.</p>
           <ul>
             <li>Workers keep synchronous extension loops off the application UI thread. A supervisor stops a worker that
               misses heartbeats for 5 seconds; startup has a 10-second deadline.</li>
