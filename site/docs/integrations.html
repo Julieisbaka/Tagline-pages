@@ -76,7 +76,60 @@
             item to the operating system trash.</li>
           <li><strong>UI:</strong> <code>open_note</code>.</li>
         </ul>
-        <p>The server also provides the <code>tagline://note/</code> resource.</p>
+        <p>The server also uses <code>tagline://note/&lt;path&gt;</code> for note resources. See the
+          <a href="#tagline-links">Tagline link format</a> below.</p>
+
+        <h2 id="tagline-links">Open notes with Tagline links</h2>
+        <p>Right-click a file in the explorer and choose <strong>Copy Tagline link</strong> to generate an app link.
+          The URI format is:</p>
+        <pre><code class="language-text">tagline://note/&lt;path&gt;[#&lt;heading&gt;]</code></pre>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Part</th>
+                <th>Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Scheme</td>
+                <td><code>tagline</code>, case-insensitive.</td>
+              </tr>
+              <tr>
+                <td>Host</td>
+                <td>The action. Only <code>note</code> is supported; it opens a note.</td>
+              </tr>
+              <tr>
+                <td>Path</td>
+                <td>A vault-relative note path, with each segment percent-encoded and <code>/</code> as the separator.</td>
+              </tr>
+              <tr>
+                <td>Fragment</td>
+                <td>An optional percent-encoded heading to jump to, matched by slug and limited to 200 characters.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>For example, <code>tagline://note/Cases/Round%201.md#Plan%20A</code> opens
+          <code>Cases/Round 1.md</code> and jumps to the “Plan A” heading.</p>
+        <h3>URI validation</h3>
+        <p>A URI can be at most 2,000 characters long and must not include a username, password, or port. The path is
+          percent-decoded once, then rejected if it:</p>
+        <ul>
+          <li>Is empty.</li>
+          <li>Contains a NUL character or a backslash.</li>
+          <li>Is absolute or starts with a drive letter such as <code>C:</code>.</li>
+          <li>Contains an empty segment or a segment starting with <code>.</code>, including <code>.</code>,
+            <code>..</code>, and hidden files.</li>
+        </ul>
+        <p>Other hosts, such as <code>tagline://settings/x</code>, are ignored. A fragment with invalid percent
+          encoding is dropped, but the note still opens.</p>
+        <h3>Opening behavior</h3>
+        <p>Links open only in the vault that is already open. They never switch vaults, create files, or run commands.
+          If the note is not in the open vault, Tagline shows <q>Link target not found in this vault</q>.</p>
+        <p>At most 20 links can be queued at once. Links arrive through the operating system: macOS
+          <code>open-url</code> events, or the command line on Windows and Linux.</p>
 
         <h2 id="local-models">Local search and analysis models</h2>
         <p>Download the embedding model in <strong>Settings &gt; Integrations</strong> to enable semantic or hybrid

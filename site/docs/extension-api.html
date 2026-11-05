@@ -74,6 +74,7 @@
           <a href="#canvas-flow">Canvas and flow</a>
           <a href="#vault">Vault API</a>
           <a href="#storage">Private storage</a>
+          <a href="#secrets">Encrypted secrets</a>
           <a href="#themes-shortcuts">Shortcuts and themes</a>
         </nav>
 
@@ -125,11 +126,13 @@
             <li><code>events</code></li>
             <li><code>ui</code></li>
             <li><code>network</code></li>
+            <li><code>secrets</code></li>
           </ul>
           <p>Tagline computes a review signature from the manifest’s declared permissions (sorted), network hosts,
             settings, ribbon items, panels, and webviews, then derives a SHA-256 token from that value. Reloading
             extensions recomputes the token and compares it with the stored approval. Changing any reviewed field
-            invalidates the approval; for example, adding <code>network</code>, changing <code>networkHosts</code>, or
+            invalidates the approval; for example, adding <code>network</code> or <code>secrets</code>, changing
+            <code>networkHosts</code>, or
             changing a declared setting requires a new review.</p>
           <p>Only <strong>Settings &gt; Extensions</strong> can enable or approve an extension, and enabling requires the
             token for its current manifest. A missing or stale token is rejected with
@@ -222,8 +225,8 @@
                 <tr>
                   <td><code>permissions</code></td>
                   <td>Optional array of <code>editor</code>, <code>editor:active-note</code>, <code>settings</code>,
-                    <code>vault:read</code>, <code>vault:write</code>, <code>events</code>, <code>ui</code>, or
-                    <code>network</code>. Defaults to <code>[]</code>.
+                    <code>vault:read</code>, <code>vault:write</code>, <code>events</code>, <code>ui</code>,
+                    <code>network</code>, or <code>secrets</code>. Defaults to <code>[]</code>.
                   </td>
                 </tr>
                 <tr>
@@ -320,6 +323,11 @@
                   <td><code>network</code></td>
                   <td>Use <code>tagline.network.fetch()</code> for host-mediated HTTPS <code>GET</code>/<code>POST</code>
                     requests to hosts declared in <code>networkHosts</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>secrets</code></td>
+                  <td>Read, store, check, and delete OS-encrypted secret strings scoped to this extension ID.
+                    Requires review; see <a href="#secrets">Encrypted secrets</a>.</td>
                 </tr>
                 <tr>
                   <td>None</td>
@@ -634,6 +642,85 @@ const filled = await tagline.helpers.templates.fill('Case: {{title}}', 'Energy')
           <p>Invalid or oversized inputs reject rather than being silently truncated. Markdown rendering, text,
             links/tags, card analysis, and speech timing exclude frontmatter; link and tag extraction skip fenced and
             inline code.</p>
+          <h3>Expanded helper surface</h3>
+          <p>Every pure utility in <code>src/lib</code> is also available through <code>tagline.helpers</code> without
+            a permission. In addition to the namespaces and methods above, the bridge exposes:</p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Namespace</th>
+                  <th>Helpers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>cards</code></td>
+                  <td><code>detect(markdown)</code>, <code>containsEvidence(document, text)</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>checkup</code></td>
+                  <td><code>fields()</code>, <code>defaults()</code>, <code>normalize(options)</code>,
+                    <code>scan(documents)</code>, <code>citedUrls(cards)</code>, <code>audit(cards, options, now)</code>,
+                    <code>linkIssues(cards, results)</code>, <code>sourceIssues(cards, results)</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>citations</code></td>
+                  <td><code>extract</code>, <code>isValidIsbn</code>, <code>expandTwoDigitYear</code>,
+                    <code>create</code>, <code>spoken</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>frontmatter</code></td>
+                  <td><code>read(markdown)</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>keybindings</code></td>
+                  <td><code>all()</code>, <code>binding(id, overrides, extra)</code>,
+                    <code>reserved(shortcut, id)</code>, <code>event(event, platform)</code>,
+                    <code>matches(event, shortcut, platform)</code>,
+                    <code>conflict(id, shortcut, overrides, extra)</code>, <code>editor(shortcut)</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>language</code></td>
+                  <td><code>languages()</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>layout</code></td>
+                  <td><code>ribbonItems()</code>, <code>defaultRibbonItems()</code>, <code>fileActions()</code>,
+                    <code>statusItems()</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>nli</code></td>
+                  <td><code>templates()</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>search</code></td>
+                  <td><code>parse</code>, <code>filter</code>, <code>vault</code>, <code>excerpt</code>,
+                    <code>mergeHybrid</code>, <code>candidateLimit</code>, <code>fuzzyScore</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>themes</code></td>
+                  <td><code>builtin()</code>, <code>colorTokens()</code>, <code>validate(theme)</code>,
+                    <code>resolveSettings(theme, values)</code>, <code>get(id, customTheme, settings)</code>,
+                    <code>extensionThemes()</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>vault</code></td>
+                  <td><code>isJson(path)</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>canvas</code></td>
+                  <td><code>empty()</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Existing <code>path</code>, <code>calendar</code>, <code>flow</code>, <code>flowCells</code>,
+            <code>folders</code>, <code>markdown</code>, <code>templates</code>, <code>speech</code>,
+            <code>readTime</code>, and other <code>vault</code>, <code>canvas</code>, and <code>citations</code>
+            helpers are unchanged. Inputs are validated and bounded: text up to 100,000 characters, documents up to
+            10,000 entries, search limits from 1 to 1,000, and keybinding platforms limited to <code>darwin</code>,
+            <code>win32</code>, and <code>linux</code>.</p>
           <p><code>tagline.helpers.createDisposables()</code> is synchronous. Add unsubscribe functions with
             <code>add</code>, then call <code>dispose()</code>; it clears the group and surfaces disposal failures.
           </p>
@@ -732,6 +819,38 @@ await tagline.storage.set('key', null); // delete the key</code></pre>
             characters. Storage is scoped by extension ID in the local app profile and survives host reloads; it is not
             encrypted, synced, or a vault file.
           </p>
+          <p>Do not store API keys or other credentials here. Use <a href="#secrets"><code>tagline.secrets</code></a>
+            for encrypted secret strings.</p>
+        </section>
+
+        <section id="secrets">
+          <h2>Encrypted extension secrets</h2>
+          <p>Declare the review-gated <code>secrets</code> permission in <code>manifest.json</code> to use
+            <code>tagline.secrets</code>:</p>
+          <pre><code class="language-json">"permissions": ["secrets"]</code></pre>
+          <pre><code class="language-js">await tagline.secrets.set('api-key', 'your-api-key'); // Promise&lt;true&gt;
+const key = await tagline.secrets.get('api-key'); // string or null
+await tagline.secrets.has('api-key'); // Promise&lt;boolean&gt;
+await tagline.secrets.delete('api-key'); // Promise&lt;boolean&gt;; same as set(key, null)</code></pre>
+          <p>Keys are non-empty strings up to 200 characters. Values are strings up to 10,000 characters, and each extension can
+            hold up to 50 secrets. <code>get</code> returns <code>null</code> when the key is absent;
+            <code>has</code> returns whether it exists. Setting <code>null</code> or <code>undefined</code> deletes the
+            key, as does <code>delete</code>.</p>
+          <p>Secrets are encrypted with the operating-system credential service through Electron
+            <code>safeStorage</code> in the main process and stored in
+            <code>&lt;userData&gt;/extension-secrets/&lt;extension-id&gt;.bin</code>, scoped by extension ID. They are
+            never written to the vault, settings exports, <code>tagline.storage</code>, or <code>localStorage</code>.
+            Calls reject if OS encryption is unavailable or the extension is disabled; there is no unencrypted
+            fallback.</p>
+          <p>Users can remove an extension's secrets with <strong>Clear stored secrets</strong> on its card in
+            <strong>Settings &gt; Extensions</strong>. Disabling an extension blocks access but does not clear its
+            stored secrets.</p>
+          <div class="docs-callout docs-callout-warning">
+            <p><strong>Keep secrets out of UI and logs.</strong> Do not log secret values or send them to panels or
+              webviews. Read and use them in your entry script (<code>main.js</code>) with
+              <code>tagline.network.fetch()</code>. Network requests also require the reviewed <code>network</code>
+              permission and the destination hostname in <code>networkHosts</code>.</p>
+          </div>
         </section>
 
         <section id="themes-shortcuts">
