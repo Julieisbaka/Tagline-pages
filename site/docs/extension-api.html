@@ -642,6 +642,85 @@ const filled = await tagline.helpers.templates.fill('Case: {{title}}', 'Energy')
           <p>Invalid or oversized inputs reject rather than being silently truncated. Markdown rendering, text,
             links/tags, card analysis, and speech timing exclude frontmatter; link and tag extraction skip fenced and
             inline code.</p>
+          <h3>Expanded helper surface</h3>
+          <p>Every pure utility in <code>src/lib</code> is also available through <code>tagline.helpers</code> without
+            a permission. In addition to the namespaces and methods above, the bridge exposes:</p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Namespace</th>
+                  <th>Helpers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>cards</code></td>
+                  <td><code>detect(markdown)</code>, <code>containsEvidence(document, text)</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>checkup</code></td>
+                  <td><code>fields()</code>, <code>defaults()</code>, <code>normalize(options)</code>,
+                    <code>scan(documents)</code>, <code>citedUrls(cards)</code>, <code>audit(cards, options, now)</code>,
+                    <code>linkIssues(cards, results)</code>, <code>sourceIssues(cards, results)</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>citations</code></td>
+                  <td><code>extract</code>, <code>isValidIsbn</code>, <code>expandTwoDigitYear</code>,
+                    <code>create</code>, <code>spoken</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>frontmatter</code></td>
+                  <td><code>read(markdown)</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>keybindings</code></td>
+                  <td><code>all()</code>, <code>binding(id, overrides, extra)</code>,
+                    <code>reserved(shortcut, id)</code>, <code>event(event, platform)</code>,
+                    <code>matches(event, shortcut, platform)</code>,
+                    <code>conflict(id, shortcut, overrides, extra)</code>, <code>editor(shortcut)</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>language</code></td>
+                  <td><code>languages()</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>layout</code></td>
+                  <td><code>ribbonItems()</code>, <code>defaultRibbonItems()</code>, <code>fileActions()</code>,
+                    <code>statusItems()</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>nli</code></td>
+                  <td><code>templates()</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>search</code></td>
+                  <td><code>parse</code>, <code>filter</code>, <code>vault</code>, <code>excerpt</code>,
+                    <code>mergeHybrid</code>, <code>candidateLimit</code>, <code>fuzzyScore</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>themes</code></td>
+                  <td><code>builtin()</code>, <code>colorTokens()</code>, <code>validate(theme)</code>,
+                    <code>resolveSettings(theme, values)</code>, <code>get(id, customTheme, settings)</code>,
+                    <code>extensionThemes()</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>vault</code></td>
+                  <td><code>isJson(path)</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>canvas</code></td>
+                  <td><code>empty()</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Existing <code>path</code>, <code>calendar</code>, <code>flow</code>, <code>flowCells</code>,
+            <code>folders</code>, <code>markdown</code>, <code>templates</code>, <code>speech</code>,
+            <code>readTime</code>, and other <code>vault</code>, <code>canvas</code>, and <code>citations</code>
+            helpers are unchanged. Inputs are validated and bounded: text up to 100,000 characters, documents up to
+            10,000 entries, search limits from 1 to 1,000, and keybinding platforms limited to <code>darwin</code>,
+            <code>win32</code>, and <code>linux</code>.</p>
           <p><code>tagline.helpers.createDisposables()</code> is synchronous. Add unsubscribe functions with
             <code>add</code>, then call <code>dispose()</code>; it clears the group and surfaces disposal failures.
           </p>
