@@ -74,6 +74,19 @@
           <li><strong>Write:</strong> <code>write_note</code>, <code>append_to_note</code>,
             <code>create_folder</code>, <code>rename_path</code>, and <code>delete_path</code>. Deleting moves the
             item to the operating system trash.</li>
+          <li><strong>Evidence:</strong>
+            <ul>
+              <li><code>list_cards</code> lists evidence cards and citation candidates. Accepts an optional Markdown
+                <code>path</code>, <code>offset</code>, and <code>limit</code>.</li>
+              <li><code>extract_citation</code> extracts a citation candidate from card Markdown. Accepts
+                <code>text</code> up to 100,000 characters.</li>
+              <li><code>validate_isbn</code> checks an ISBN-10 or ISBN-13 checksum without looking up a book. Accepts
+                <code>isbn</code> up to 100 characters.</li>
+              <li><code>audit_evidence</code> finds missing or uncertain citation fields and stale years. Accepts an
+                optional Markdown <code>path</code>, <code>staleYears</code> (1–100), <code>offset</code>, and
+                <code>limit</code>.</li>
+            </ul>
+          </li>
           <li><strong>UI:</strong> <code>open_note</code>.</li>
         </ul>
         <p>The server also uses <code>tagline://note/&lt;path&gt;</code> for note resources. See the
