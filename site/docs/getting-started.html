@@ -66,7 +66,8 @@
 
         <div class="docs-callout docs-callout-warning">
           <p><strong>First launch:</strong> release builds are unsigned and not notarized, so Windows or macOS may show
-            an operating-system security warning. The app does not update itself in the background.</p>
+            an operating-system security warning. Tagline can check for, download, and install updates from Settings;
+            updates are not installed without your confirmation.</p>
         </div>
 
         <h2>Open a vault</h2>
@@ -79,13 +80,16 @@
         <h2>Keep Tagline up to date</h2>
         <ol>
           <li>Open <strong>Settings &gt; Installation</strong> and choose <strong>Check for updates</strong>.</li>
-          <li>If a newer release is available, download the installer for your operating system.</li>
-          <li>On Windows, run the installer with the same install scope and location. On macOS, replace Tagline in
-            Applications with the downloaded app.</li>
+          <li>If an update is available, choose <strong>Download update</strong>. Tagline verifies the download against
+            the release checksum.</li>
+          <li>On Windows, choose <strong>Install update and restart</strong>; Tagline saves pending edits before
+            restarting. On macOS, choose <strong>Open installer</strong>, quit Tagline, then replace the app in
+            Applications with the one from the opened disk image.</li>
         </ol>
-        <p>Updates are manual and user-initiated. Keep the existing app ID, product name, install scope, and profile so
-          the updated app can find your existing settings. Back up your profile and vaults first; do not remove the
-          profile when updating.</p>
+        <p>Update checks and installation are user-initiated, and in-app downloads are available in packaged
+          installations when a compatible release is published. If no compatible download is offered, install the
+          release manually. Keep the existing app ID, product name, install scope, and profile so the updated app can
+          find your existing settings. Back up your profile and vaults first; do not remove the profile when updating.</p>
 
         <h2>Run from source</h2>
         <p>For development, clone the project and use the repository’s npm scripts:</p>
